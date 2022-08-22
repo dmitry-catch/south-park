@@ -4,7 +4,7 @@ import "./App.css";
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
-//testcommit
+
 export default class App extends Component {
   constructor(props) {
     super(props);
