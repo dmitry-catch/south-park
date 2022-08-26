@@ -39,14 +39,13 @@ export default class Item extends Component {
   }
 
   asyncGetChar() {
-    let interval = setInterval(() => {
+    this.interval = setInterval(() => {
       this.getRandomChar();
-      console.log("new");
-    }, 1000);
+    }, 2000);
   }
 
   componentWillUnmount() {
-    console.log("THATS ALL");
+    clearInterval(this.interval);
   }
 
   render() {
