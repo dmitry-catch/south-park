@@ -20,7 +20,8 @@ export default class Item extends Component {
       name: "So come on down",
       sex: "to South Park!",
       age: "and meet some friends of mine",
-      vision: true,
+      //{}
+      loading: true,
     };
     this.asyncGetChar = this.asyncGetChar.bind(this);
   }
@@ -29,19 +30,22 @@ export default class Item extends Component {
 
   getRandomChar() {
     const random = Math.floor(1 + Math.random() * 207); //208 characters all
-    this.GetData.fetchRequest(random).then((resp) => {
-      this.setState({
-        name: resp.data.name,
-        age: resp.data.age,
-        sex: resp.data.sex,
-      });
-    });
+    this.GetData.fetchRequest(random).then(this.charLoaded);
   }
+
+  charLoaded = (resp) => {
+    this.setState({
+      name: resp.data.name,
+      age: resp.data.age,
+      sex: resp.data.sex,
+      loading: false,
+    });
+  };
 
   asyncGetChar() {
     this.interval = setInterval(() => {
       this.getRandomChar();
-    }, 2000);
+    }, 1000);
   }
 
   componentWillUnmount() {
@@ -49,16 +53,29 @@ export default class Item extends Component {
   }
 
   render() {
-    const { name, sex, age } = this.state;
+    const { loading } = this.state;
+    const content = loading ? (
+      <h2>loading</h2>
+    ) : (
+      <View age={this.state.age} name={this.state.name} sex={this.state.sex} />
+    );
     return (
-      <Card className="content">
-        <CardBody>
-          <CardTitle>{name}</CardTitle>
-          <CardSubtitle>{sex}</CardSubtitle>
-          <CardText>{age}</CardText>
-          <Button onClick={this.asyncGetChar}>Roll!</Button>
-        </CardBody>
-      </Card>
+      <>
+        {content}
+        <Button onClick={this.asyncGetChar}>Roll!</Button>
+      </>
     );
   }
 }
+
+const View = ({ age, name, sex }) => {
+  return (
+    <Card className="content">
+      <CardBody>
+        <CardTitle>{name}</CardTitle>
+        <CardSubtitle>{sex}</CardSubtitle>
+        <CardText>{age}</CardText>
+      </CardBody>
+    </Card>
+  );
+};

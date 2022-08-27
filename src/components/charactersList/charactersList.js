@@ -19,8 +19,9 @@ export default class CharactersList extends Component {
   }
 
   render() {
+    const { vision } = this.state;
     let res;
-    if (this.state.vision) {
+    if (vision) {
       res = <Item />;
     } else {
       res = <h1>Oops!</h1>;
