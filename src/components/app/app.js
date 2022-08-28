@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import CharactersList from "../charactersList";
+import Header from "../header";
 
 import "./app.sass";
 
@@ -10,6 +11,11 @@ export default class App extends Component {
   }
 
   render() {
-    return <CharactersList />;
+    return (
+      <>
+        <Header />
+        <CharactersList />
+      </>
+    );
   }
 }

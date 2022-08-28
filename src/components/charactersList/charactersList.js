@@ -24,12 +24,14 @@ export default class CharactersList extends Component {
     if (vision) {
       res = <Item />;
     } else {
-      res = <h1>Oops!</h1>;
+      res = null;
     }
     return (
-      <div className="app">
+      <div className="wrapper">
         <div className="card">
           <button onClick={this.visionToggle}>🗕</button>
+          {res}
+          {res}
           {res}
         </div>
       </div>
