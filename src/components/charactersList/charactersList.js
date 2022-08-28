@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Item from "../item/item";
+import Char from "../char";
 
 import "./charactersList.sass";
 
@@ -22,7 +22,7 @@ export default class CharactersList extends Component {
     const { vision } = this.state;
     let res;
     if (vision) {
-      res = <Item />;
+      res = <Char />;
     } else {
       res = null;
     }

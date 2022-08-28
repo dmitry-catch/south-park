@@ -11,9 +11,9 @@ import {
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import "./item.sass";
+import "./char.sass";
 
-export default class Item extends Component {
+export default class Char extends Component {
   constructor(props) {
     super(props);
     this.state = {
