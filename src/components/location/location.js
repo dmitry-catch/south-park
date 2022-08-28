@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Location from "../location"
 
-import "./locationsList.sass";
+import "./location.sass";
 
-export default class LocationsList extends Component {
+export default class Location extends Component {
   constructor(props) {
     super(props);
     this.state = {
