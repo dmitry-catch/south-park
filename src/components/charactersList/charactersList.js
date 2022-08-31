@@ -3,7 +3,7 @@ import Char from "../char";
 
 import "./charactersList.sass";
 
-export default class CharactersList extends Component {
+class CharactersList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,3 +38,5 @@ export default class CharactersList extends Component {
     );
   }
 }
+
+export default CharactersList;
