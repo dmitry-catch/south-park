@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Char from "../char";
+import Location from "../location";
 
 import "./itemList.sass";
 
@@ -22,7 +23,12 @@ class ItemList extends Component {
     const { vision } = this.state;
     let res;
     if (vision) {
-      res = <Char />;
+      res = (
+        <>
+          <Char />
+          <Location />
+        </>
+      );
     } else {
       res = null;
     }
