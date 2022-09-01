@@ -38,7 +38,7 @@ export default class Location extends Component {
   asyncGetChar() {
     this.interval = setInterval(() => {
       this.getRandomChar();
-    }, 3000);
+    }, 1000);
   }
 
   componentWillUnmount() {

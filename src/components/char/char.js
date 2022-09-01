@@ -10,7 +10,6 @@ import {
 } from "reactstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./char.sass";
 
 export default class Char extends Component {
