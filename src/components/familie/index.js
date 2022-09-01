@@ -1,2 +1,2 @@
-// import Familie from "./familie";
-// export default Familie;
+import Familie from "./familie";
+export default Familie;
