@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import CharactersList from "../charactersList";
+import ItemList from "../itemList";
 import Header from "../header";
 
 import "./app.sass";
@@ -19,9 +19,9 @@ export default class App extends Component {
           <h1>hi</h1>
           <Routes>
             <Route path="/" element={<h2>route</h2>} />
-            <Route path="/first" element={<CharactersList />} />
-            <Route path="/second" element={<CharactersList />} />
-            <Route path="/third" element={<CharactersList />} />
+            <Route path="/first" element={<ItemList />} />
+            <Route path="/second" element={<ItemList />} />
+            <Route path="/third" element={<ItemList />} />
           </Routes>
         </div>
       </Router>

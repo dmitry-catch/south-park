@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Char from "../char";
 
-import "./charactersList.sass";
+import "./itemList.sass";
 
-class CharactersList extends Component {
+class ItemList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,12 +31,10 @@ class CharactersList extends Component {
         <div className="card">
           <button onClick={this.visionToggle}>🗕</button>
           {res}
-          {res}
-          {res}
         </div>
       </div>
     );
   }
 }
 
-export default CharactersList;
+export default ItemList;

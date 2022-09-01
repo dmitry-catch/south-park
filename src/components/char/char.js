@@ -30,7 +30,7 @@ export default class Char extends Component {
 
   getRandomChar() {
     const random = Math.floor(1 + Math.random() * 207); //208 characters all
-    this.GetData.fetchRequest(random).then(this.charLoaded);
+    this.GetData.fetchRequest(`characters`, random).then(this.charLoaded);
   }
 
   charLoaded = (resp) => {
