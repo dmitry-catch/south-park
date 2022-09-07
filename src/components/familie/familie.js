@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GetData from "../../services/getData";
+import Loader from "../../loader";
 
 import { Button } from "reactstrap";
 
@@ -9,10 +10,10 @@ export default class Familie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      created_at: "",
-      updated_at: "",
-      characters: "",
+      name: "Name",
+      created_at: "Cr",
+      updated_at: "Up",
+      characters: "Character",
       loading: true,
     };
     this.asyncGetChar = this.asyncGetChar.bind(this);
@@ -48,7 +49,7 @@ export default class Familie extends Component {
   render() {
     const { loading } = this.state;
     const content = loading ? (
-      <h2>l-o-a-d-i-n-g</h2>
+      <Loader />
     ) : (
       <View
         updated_at={this.state.updated_at}

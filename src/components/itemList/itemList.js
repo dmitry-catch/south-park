@@ -22,10 +22,9 @@ class ItemList extends Component {
     const { item } = this.props;
     let res;
     if (vision) {
-      // res = { component };
       res = item;
     } else {
-      res = null;
+      res = <div className="height"></div>;
     }
     return (
       <div className="wrapper">

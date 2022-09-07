@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GetData from "../../services/getData";
+import Loader from "../../loader";
 import {
   Card,
   CardBody,
@@ -54,7 +55,7 @@ export default class Char extends Component {
   render() {
     const { loading } = this.state;
     const content = loading ? (
-      <h2>loading</h2>
+      <Loader />
     ) : (
       <View age={this.state.age} name={this.state.name} sex={this.state.sex} />
     );

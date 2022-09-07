@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GetData from "../../services/getData";
+import Loader from "../../loader";
 
 import { Button } from "reactstrap";
 
@@ -48,7 +49,7 @@ export default class Location extends Component {
   render() {
     const { loading } = this.state;
     const content = loading ? (
-      <h2>LOADING</h2>
+      <Loader />
     ) : (
       <View
         updated_at={this.state.updated_at}

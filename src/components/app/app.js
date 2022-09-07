@@ -23,9 +23,12 @@ export default class App extends Component {
           <Header />
           <h1>hi</h1>
           <Routes>
-            <Route path="/first" element={<ItemList item={<Char />} />} />
-            <Route path="/second" element={<ItemList item={<Location />} />} />
-            <Route path="/third" element={<ItemList item={<Familie />} />} />
+            <Route path="/chars" element={<ItemList item={<Char />} />} />
+            <Route
+              path="/locations"
+              element={<ItemList item={<Location />} />}
+            />
+            <Route path="/families" element={<ItemList item={<Familie />} />} />
           </Routes>
         </div>
       </Router>
