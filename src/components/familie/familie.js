@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import GetData from "../../services/getData";
 import Loader from "../../loader";
 
-import { Button } from "reactstrap";
+import { Card, CardBody, CardTitle, Button } from "reactstrap";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./familie.sass";
 
@@ -10,6 +12,7 @@ export default class Familie extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "Id",
       name: "Name",
       created_at: "Cr",
       updated_at: "Up",
@@ -28,6 +31,7 @@ export default class Familie extends Component {
 
   charLoaded = (resp) => {
     this.setState({
+      id: resp.data.id,
       name: resp.data.name,
       created_at: resp.data.created_at,
       updated_at: resp.data.updated_at,
@@ -47,13 +51,11 @@ export default class Familie extends Component {
   }
 
   render() {
-    const { loading } = this.state;
-    const content = loading ? (
-      <Loader />
-    ) : (
+    const content = (
       <View
-        updated_at={this.state.updated_at}
+        id={this.state.id}
         name={this.state.name}
+        updated_at={this.state.updated_at}
         created_at={this.state.created_at}
         characters={this.state.characters}
       />
@@ -67,13 +69,23 @@ export default class Familie extends Component {
   }
 }
 
-const View = ({ updated_at, name, created_at, characters }) => {
+const View = ({ id, name, updated_at, created_at, characters, loading }) => {
+  let loader;
+  if (loading) {
+    loader = <Loader />;
+  } else {
+    loader = null;
+  }
   return (
-    <div className="wrapper">
-      <div className="item">{name}</div>
-      <div className="item">{created_at}</div>
-      <div className="item">{updated_at}</div>
-      <div className="item">{characters}</div>
-    </div>
+    <Card className="content">
+      <CardBody>
+        <CardTitle>{id}</CardTitle>
+        <CardTitle>{name}</CardTitle>
+        <CardTitle>{updated_at}</CardTitle>
+        <CardTitle>{created_at}</CardTitle>
+        <CardTitle>{characters}</CardTitle>
+        {loader}
+      </CardBody>
+    </Card>
   );
 };

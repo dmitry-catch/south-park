@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import GetData from "../../services/getData";
 import Loader from "../../loader";
 
-import { Button } from "reactstrap";
+import { Card, CardBody, CardTitle, Button } from "reactstrap";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./location.sass";
 
@@ -10,6 +12,7 @@ export default class Location extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       name: "",
       created_at: "",
       updated_at: "",
@@ -28,6 +31,7 @@ export default class Location extends Component {
 
   charLoaded = (resp) => {
     this.setState({
+      id: resp.data.id,
       name: resp.data.name,
       created_at: resp.data.created_at,
       updated_at: resp.data.updated_at,
@@ -47,10 +51,7 @@ export default class Location extends Component {
   }
 
   render() {
-    const { loading } = this.state;
-    const content = loading ? (
-      <Loader />
-    ) : (
+    const content = (
       <View
         updated_at={this.state.updated_at}
         name={this.state.name}
@@ -58,6 +59,7 @@ export default class Location extends Component {
         episodes={this.state.episodes}
       />
     );
+
     return (
       <>
         {content}
@@ -67,13 +69,23 @@ export default class Location extends Component {
   }
 }
 
-const View = ({ updated_at, name, created_at, episodes }) => {
+const View = ({ id, name, updated_at, created_at, episodes, loading }) => {
+  let loader;
+  if (loading) {
+    loader = <Loader />;
+  } else {
+    loader = null;
+  }
   return (
-    <div className="wrapper">
-      <div className="item">{name}</div>
-      <div className="item">{created_at}</div>
-      <div className="item">{updated_at}</div>
-      <div className="item">{episodes}</div>
-    </div>
+    <Card className="content">
+      <CardBody>
+        <CardTitle>{id}</CardTitle>
+        <CardTitle>{name}</CardTitle>
+        <CardTitle>{updated_at}</CardTitle>
+        <CardTitle>{created_at}</CardTitle>
+        <CardTitle>{episodes}</CardTitle>
+        {loader}
+      </CardBody>
+    </Card>
   );
 };

@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import GetData from "../../services/getData";
 import Loader from "../../loader";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Button,
-} from "reactstrap";
+import { Card, CardBody, CardTitle, Button } from "reactstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./char.sass";
@@ -17,9 +10,11 @@ export default class Char extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "So come on down",
-      sex: "to South Park!",
-      age: "and meet some friends of mine",
+      id: "So come on down",
+      name: "to South Park!",
+      sex: "and meet some friends ",
+      hair_color: "of ",
+      occupation: "mine",
       //{}
       loading: true,
     };
@@ -35,9 +30,11 @@ export default class Char extends Component {
 
   charLoaded = (resp) => {
     this.setState({
+      id: resp.data.id,
       name: resp.data.name,
-      age: resp.data.age,
       sex: resp.data.sex,
+      hair_color: resp.data.hair_color,
+      occupation: resp.data.occupation,
       loading: false,
     });
   };
@@ -53,11 +50,14 @@ export default class Char extends Component {
   }
 
   render() {
-    const { loading } = this.state;
-    const content = loading ? (
-      <Loader />
-    ) : (
-      <View age={this.state.age} name={this.state.name} sex={this.state.sex} />
+    const content = (
+      <View
+        id={this.state.id}
+        name={this.state.name}
+        sex={this.state.sex}
+        hair_color={this.state.hair_color}
+        occupation={this.state.occupation}
+      />
     );
     return (
       <>
@@ -68,13 +68,22 @@ export default class Char extends Component {
   }
 }
 
-const View = ({ age, name, sex }) => {
+const View = ({ id, name, sex, hair_color, occupation, loading }) => {
+  let loader;
+  if (loading) {
+    loader = <Loader />;
+  } else {
+    loader = null;
+  }
   return (
     <Card className="content">
       <CardBody>
+        <CardTitle>{id}</CardTitle>
         <CardTitle>{name}</CardTitle>
-        <CardSubtitle>{sex}</CardSubtitle>
-        <CardText>{age}</CardText>
+        <CardTitle>{sex}</CardTitle>
+        <CardTitle>{hair_color}</CardTitle>
+        <CardTitle>{occupation}</CardTitle>
+        {loader}
       </CardBody>
     </Card>
   );
