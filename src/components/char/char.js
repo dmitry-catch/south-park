@@ -36,7 +36,7 @@ export default class Char extends Component {
       sex: resp.data.sex,
       hair_color: resp.data.hair_color,
       occupation: resp.data.occupation,
-      loading: false,
+      loading: true,
     });
   };
 
@@ -84,8 +84,8 @@ const View = ({ id, name, sex, hair_color, occupation, loading }) => {
   return (
     <Card className="content">
       <CardBody>
-        <CardTitle>{id}</CardTitle>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle className="white_line">{id}</CardTitle>
+        <CardTitle className="white_line">{name}</CardTitle>
         <CardTitle>{sex}</CardTitle>
         <CardTitle>{hair_color}</CardTitle>
         <CardTitle>{occupation}</CardTitle>
