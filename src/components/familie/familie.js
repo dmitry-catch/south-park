@@ -19,17 +19,17 @@ export default class Familie extends Component {
       characters: "Character",
       loading: true,
     };
-    this.asyncGetChar = this.asyncGetChar.bind(this);
+    this.asyncGetFamilie = this.asyncGetFamilie.bind(this);
   }
 
   GetData = new GetData();
 
-  getRandomChar() {
+  getRandomFamilie() {
     const random = Math.floor(1 + Math.random() * 48); //49 families all
-    this.GetData.fetchRequest(`families`, random).then(this.charLoaded);
+    this.GetData.fetchRequest(`families`, random).then(this.familieLoaded);
   }
 
-  charLoaded = (resp) => {
+  familieLoaded = (resp) => {
     this.setState({
       id: resp.data.id,
       name: resp.data.name,
@@ -40,9 +40,9 @@ export default class Familie extends Component {
     });
   };
 
-  asyncGetChar() {
+  asyncGetFamilie() {
     this.interval = setInterval(() => {
-      this.getRandomChar();
+      this.getRandomFamilie();
     }, 1000);
   }
 
@@ -58,12 +58,13 @@ export default class Familie extends Component {
         updated_at={this.state.updated_at}
         created_at={this.state.created_at}
         characters={this.state.characters}
+        loading={this.state.loading}
       />
     );
     return (
       <>
         {content}
-        <Button onClick={this.asyncGetChar}>Roll!</Button>
+        <Button onClick={this.asyncGetFamilie}>Roll!</Button>
       </>
     );
   }

@@ -6,8 +6,11 @@ import ItemList from "../itemList";
 import Char from "../char";
 import CharList from "../charList";
 
-import Location from "../location";
 import Familie from "../familie";
+import FamilieList from "../familieList";
+
+import Location from "../location";
+import LocationList from "../locationList";
 
 import Header from "../header";
 
@@ -23,17 +26,21 @@ export default class App extends Component {
       <Router>
         <div className="app">
           <Header />
-          <h1>hi</h1>
+          <h1>South park</h1>
+
           <Routes>
             <Route
               path="/chars"
               element={<ItemList item={<Char />} list={<CharList />} />}
             />
             <Route
-              path="/locations"
-              element={<ItemList item={<Location />} />}
+              path="/families"
+              element={<ItemList item={<Familie />} list={<FamilieList />} />}
             />
-            <Route path="/families" element={<ItemList item={<Familie />} />} />
+            <Route
+              path="/locations"
+              element={<ItemList item={<Location />} list={<LocationList />} />}
+            />
           </Routes>
         </div>
       </Router>

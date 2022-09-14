@@ -12,24 +12,24 @@ export default class Location extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
-      name: "",
-      created_at: "",
-      updated_at: "",
-      episodes: "",
+      id: "A",
+      name: "B",
+      created_at: "C",
+      updated_at: "D",
+      episodes: "E",
       loading: true,
     };
-    this.asyncGetChar = this.asyncGetChar.bind(this);
+    this.asyncGetLocation = this.asyncGetLocation.bind(this);
   }
 
   GetData = new GetData();
 
-  getRandomChar() {
+  getRandomLocation() {
     const random = Math.floor(1 + Math.random() * 660); //661 locations all
-    this.GetData.fetchRequest(`locations`, random).then(this.charLoaded);
+    this.GetData.fetchRequest(`locations`, random).then(this.locationLoaded);
   }
 
-  charLoaded = (resp) => {
+  locationLoaded = (resp) => {
     this.setState({
       id: resp.data.id,
       name: resp.data.name,
@@ -40,9 +40,9 @@ export default class Location extends Component {
     });
   };
 
-  asyncGetChar() {
+  asyncGetLocation() {
     this.interval = setInterval(() => {
-      this.getRandomChar();
+      this.getRandomLocation();
     }, 1000);
   }
 
@@ -53,17 +53,19 @@ export default class Location extends Component {
   render() {
     const content = (
       <View
+        id={this.state.id}
         updated_at={this.state.updated_at}
         name={this.state.name}
         created_at={this.state.created_at}
         episodes={this.state.episodes}
+        loading={this.state.loading}
       />
     );
 
     return (
       <>
         {content}
-        <Button onClick={this.asyncGetChar}>Roll!</Button>
+        <Button onClick={this.asyncGetLocation}>Roll!</Button>
       </>
     );
   }
