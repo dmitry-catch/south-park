@@ -19,7 +19,7 @@ class ItemList extends Component {
 
   render() {
     const { vision } = this.state;
-    const { item } = this.props;
+    const { item, list } = this.props;
     let res;
     if (vision) {
       res = item;
@@ -27,10 +27,12 @@ class ItemList extends Component {
       res = <div className="height"></div>;
     }
     return (
-      <div className="wrapper">
-        <div className="card">
+      <div className="wrap">
+        <div className="item">
+          <span>Свернуть</span>
           <button onClick={this.visionToggle}>🗕</button>
           {res}
+          {list}
         </div>
       </div>
     );

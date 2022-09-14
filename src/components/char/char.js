@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GetData from "../../services/getData";
 import Loader from "../../loader";
+
 import { Card, CardBody, CardTitle, Button } from "reactstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -49,6 +50,10 @@ export default class Char extends Component {
     clearInterval(this.interval);
   }
 
+  ClickItem(e) {
+    e.target.className = "list-group-item list-group-item-action active";
+  }
+
   render() {
     const content = (
       <View
@@ -57,6 +62,7 @@ export default class Char extends Component {
         sex={this.state.sex}
         hair_color={this.state.hair_color}
         occupation={this.state.occupation}
+        loading={this.state.loading}
       />
     );
     return (

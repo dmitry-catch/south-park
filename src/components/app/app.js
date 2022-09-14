@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ItemList from "../itemList";
 
 import Char from "../char";
+import CharList from "../charList";
+
 import Location from "../location";
 import Familie from "../familie";
 
@@ -23,7 +25,10 @@ export default class App extends Component {
           <Header />
           <h1>hi</h1>
           <Routes>
-            <Route path="/chars" element={<ItemList item={<Char />} />} />
+            <Route
+              path="/chars"
+              element={<ItemList item={<Char />} list={<CharList />} />}
+            />
             <Route
               path="/locations"
               element={<ItemList item={<Location />} />}
