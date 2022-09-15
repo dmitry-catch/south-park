@@ -14,6 +14,7 @@ export default class CharList extends Component {
     };
     this.top = [];
     this.getRandomChar();
+    this.show = this.show.bind(this);
   }
 
   GetData = new GetData();
@@ -40,11 +41,15 @@ export default class CharList extends Component {
     });
     return (
       <div className="list">
-        <h2>Top 5 Characters</h2>
+        <h2>Top 5:</h2>
         <div className="list-group">
           {rez}
-          <button id="show-btn" onClick={() => this.show()}>
-            SHOW ME!
+          <button
+            id="show-btn btn-lg"
+            className="btn btn-primary"
+            onClick={() => this.show()}
+          >
+            SHOW!
           </button>
         </div>
       </div>

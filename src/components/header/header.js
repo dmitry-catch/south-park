@@ -11,9 +11,15 @@ export default class Header extends Component {
   render() {
     return (
       <div className="header">
-        <Link to="/chars">Chars</Link>
-        <Link to="/families">Families</Link>
-        <Link to="/locations">Locations</Link>
+        <Link className="h" to="/chars">
+          Chars
+        </Link>
+        <Link className="h" to="/families">
+          Families
+        </Link>
+        <Link className="h" to="/locations">
+          Locations
+        </Link>
       </div>
     );
   }

@@ -27,7 +27,6 @@ export default class App extends Component {
         <div className="app">
           <Header />
           <h1>South park</h1>
-
           <Routes>
             <Route
               path="/chars"

@@ -82,8 +82,17 @@ export default class Char extends Component {
     return (
       <>
         {content}
-        <Button onClick={this.asyncGetChar}>Roll!</Button>
-        <Button onClick={this.stopRolling}>stop</Button>
+        <div className="btn-cont">
+          <Button
+            className="btn btn-warning btn-lg"
+            onClick={this.asyncGetChar}
+          >
+            Roll!
+          </Button>
+          <Button className="btn btn-danger btn-lg" onClick={this.stopRolling}>
+            Stop
+          </Button>
+        </div>
       </>
     );
   }
@@ -91,19 +100,21 @@ export default class Char extends Component {
 
 const View = ({ id, name, sex, hair_color, occupation, loading }) => {
   let loader;
+  let optional;
   if (loading) {
     loader = <Loader />;
   } else {
     loader = null;
+    optional = "white_line";
   }
   return (
     <Card className="content">
       <CardBody className="cardbody">
         <CardTitle className="white_line">{id}</CardTitle>
         <CardTitle className="white_line">{name}</CardTitle>
-        <CardTitle>{sex}</CardTitle>
-        <CardTitle>{hair_color}</CardTitle>
-        <CardTitle>{occupation}</CardTitle>
+        <CardTitle className={optional}>{sex}</CardTitle>
+        <CardTitle className={optional}>{hair_color}</CardTitle>
+        <CardTitle className={optional}>{occupation}</CardTitle>
         {loader}
       </CardBody>
     </Card>

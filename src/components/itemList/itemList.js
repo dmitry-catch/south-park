@@ -7,30 +7,26 @@ class ItemList extends Component {
     super(props);
     this.state = {
       vision: true,
-      toggleClass: false,
     };
     this.visionToggle = this.visionToggle.bind(this);
   }
 
   visionToggle() {
-    this.setState(({ vision, toggleClass }) => ({
+    this.setState(({ vision }) => ({
       vision: !vision,
-      toggleClass: !toggleClass,
     }));
   }
 
   render() {
-    const { vision, toggleClass } = this.state;
+    const { vision } = this.state;
     const { item, list } = this.props;
-    let itemClass = "";
     let res;
-    vision ? (res = item) : (res = null);
-    toggleClass ? (itemClass = "item displ") : (itemClass = "item");
+    vision ? (res = item) : (res = <h2 className="empty">Empty...</h2>);
     return (
       <div className="wrap">
-        <div className={itemClass}>
-          <div>
-            <span>Свернуть</span>
+        <div className="item">
+          <div className="roll">
+            <span className="header-roll">Roll random character </span>
             <button onClick={this.visionToggle}>🗕</button>
             {res}
           </div>
