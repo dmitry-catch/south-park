@@ -11,15 +11,16 @@ export default class Char extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "So come on down",
-      name: "to South Park!",
-      sex: "and meet some friends ",
-      hair_color: "of ",
-      occupation: "mine",
+      id: "Don't forget",
+      name: "to bring a Towel",
+      sex: "",
+      hair_color: "",
+      occupation: "",
       //{}
       loading: true,
     };
     this.asyncGetChar = this.asyncGetChar.bind(this);
+    this.stopRolling = this.stopRolling.bind(this);
   }
 
   GetData = new GetData();
@@ -36,14 +37,27 @@ export default class Char extends Component {
       sex: resp.data.sex,
       hair_color: resp.data.hair_color,
       occupation: resp.data.occupation,
-      loading: true,
+      loading: false,
     });
   };
 
   asyncGetChar() {
+    clearInterval(this.interval); //if user press btn twice
     this.interval = setInterval(() => {
       this.getRandomChar();
     }, 1000);
+  }
+
+  stopRolling() {
+    clearInterval(this.interval);
+    this.setState({
+      id: "Don't forget",
+      name: "to bring a Towel",
+      sex: "",
+      hair_color: "",
+      occupation: "",
+      loading: true,
+    });
   }
 
   componentWillUnmount() {
@@ -69,6 +83,7 @@ export default class Char extends Component {
       <>
         {content}
         <Button onClick={this.asyncGetChar}>Roll!</Button>
+        <Button onClick={this.stopRolling}>stop</Button>
       </>
     );
   }
@@ -83,7 +98,7 @@ const View = ({ id, name, sex, hair_color, occupation, loading }) => {
   }
   return (
     <Card className="content">
-      <CardBody>
+      <CardBody className="cardbody">
         <CardTitle className="white_line">{id}</CardTitle>
         <CardTitle className="white_line">{name}</CardTitle>
         <CardTitle>{sex}</CardTitle>

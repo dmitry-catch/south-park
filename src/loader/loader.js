@@ -8,6 +8,11 @@ export default class Loader extends Component {
     this.state = {};
   }
   render() {
-    return <span class="loader"></span>;
+    return (
+      <>
+        <span className="loader"></span>
+        <span className="mouth"></span>
+      </>
+    );
   }
 }

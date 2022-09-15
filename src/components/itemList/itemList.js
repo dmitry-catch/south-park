@@ -7,32 +7,34 @@ class ItemList extends Component {
     super(props);
     this.state = {
       vision: true,
+      toggleClass: false,
     };
     this.visionToggle = this.visionToggle.bind(this);
   }
 
   visionToggle() {
-    this.setState(({ vision }) => ({
+    this.setState(({ vision, toggleClass }) => ({
       vision: !vision,
+      toggleClass: !toggleClass,
     }));
   }
 
   render() {
-    const { vision } = this.state;
+    const { vision, toggleClass } = this.state;
     const { item, list } = this.props;
+    let itemClass = "";
     let res;
-    if (vision) {
-      res = item;
-    } else {
-      res = <div className="height"></div>;
-    }
+    vision ? (res = item) : (res = null);
+    toggleClass ? (itemClass = "item displ") : (itemClass = "item");
     return (
       <div className="wrap">
-        <div className="item">
-          <span>Свернуть</span>
-          <button onClick={this.visionToggle}>🗕</button>
-          {res}
-          {list}
+        <div className={itemClass}>
+          <div>
+            <span>Свернуть</span>
+            <button onClick={this.visionToggle}>🗕</button>
+            {res}
+          </div>
+          <div>{list}</div>
         </div>
       </div>
     );
