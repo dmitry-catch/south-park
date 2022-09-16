@@ -108,7 +108,7 @@ const View = ({ id, name, sex, hair_color, occupation, loading }) => {
     optional = "white_line";
   }
   return (
-    <Card className="content">
+    <Card className="content_char">
       <CardBody className="cardbody">
         <CardTitle className="white_line">{id}</CardTitle>
         <CardTitle className="white_line">{name}</CardTitle>

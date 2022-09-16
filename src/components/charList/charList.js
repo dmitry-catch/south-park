@@ -45,8 +45,7 @@ export default class CharList extends Component {
         <div className="list-group">
           {rez}
           <button
-            id="show-btn btn-lg"
-            className="btn btn-primary"
+            className="btn btn-primary btn-lg"
             onClick={() => this.show()}
           >
             SHOW!

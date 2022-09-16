@@ -5,7 +5,6 @@ import Loader from "../../loader";
 import { Card, CardBody, CardTitle, Button } from "reactstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./location.sass";
 
 export default class Location extends Component {
@@ -16,10 +15,10 @@ export default class Location extends Component {
       name: "B",
       created_at: "C",
       updated_at: "D",
-      episodes: "E",
       loading: true,
     };
     this.asyncGetLocation = this.asyncGetLocation.bind(this);
+    this.stopRolling = this.stopRolling.bind(this);
   }
 
   GetData = new GetData();
@@ -35,19 +34,35 @@ export default class Location extends Component {
       name: resp.data.name,
       created_at: resp.data.created_at,
       updated_at: resp.data.updated_at,
-      episodes: resp.data.episodes,
       loading: false,
     });
   };
 
   asyncGetLocation() {
+    clearInterval(this.interval); //if user press btn twice
     this.interval = setInterval(() => {
       this.getRandomLocation();
     }, 1000);
   }
 
+  stopRolling() {
+    clearInterval(this.interval);
+    this.setState({
+      id: "Don't forget",
+      name: "to bring a Towel",
+      sex: "",
+      hair_color: "",
+      occupation: "",
+      loading: true,
+    });
+  }
+
   componentWillUnmount() {
     clearInterval(this.interval);
+  }
+
+  ClickItem(e) {
+    e.target.className = "list-group-item list-group-item-action active";
   }
 
   render() {
@@ -57,21 +72,29 @@ export default class Location extends Component {
         updated_at={this.state.updated_at}
         name={this.state.name}
         created_at={this.state.created_at}
-        episodes={this.state.episodes}
         loading={this.state.loading}
       />
     );
-
     return (
       <>
         {content}
-        <Button onClick={this.asyncGetLocation}>Roll!</Button>
+        <div className="btn-cont">
+          <Button
+            className="btn btn-warning btn-lg"
+            onClick={this.asyncGetLocation}
+          >
+            Roll!
+          </Button>
+          <Button className="btn btn-danger btn-lg" onClick={this.stopRolling}>
+            Stop
+          </Button>
+        </div>
       </>
     );
   }
 }
 
-const View = ({ id, name, updated_at, created_at, episodes, loading }) => {
+const View = ({ id, name, updated_at, created_at, loading }) => {
   let loader;
   if (loading) {
     loader = <Loader />;
@@ -79,13 +102,12 @@ const View = ({ id, name, updated_at, created_at, episodes, loading }) => {
     loader = null;
   }
   return (
-    <Card className="content">
+    <Card className="content_location">
       <CardBody>
         <CardTitle>{id}</CardTitle>
         <CardTitle>{name}</CardTitle>
         <CardTitle>{updated_at}</CardTitle>
         <CardTitle>{created_at}</CardTitle>
-        <CardTitle>{episodes}</CardTitle>
         {loader}
       </CardBody>
     </Card>
