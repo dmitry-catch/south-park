@@ -21,7 +21,13 @@ class ItemList extends Component {
     const { vision } = this.state;
     const { item, list } = this.props;
     let res;
-    vision ? (res = item) : (res = <h2 className="empty">Empty...</h2>);
+    vision
+      ? (res = item)
+      : (res = (
+          <div className="empty">
+            <h2>Empty...</h2>
+          </div>
+        ));
     return (
       <div className="wrap">
         <div className="item">
