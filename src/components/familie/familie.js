@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import GetData from "../../services/getData";
-import Loader from "../../loader";
+import FamilieLoader from "../../familieLoader";
 
-import { Card, CardBody, CardTitle, Button } from "reactstrap";
+import { Button } from "reactstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./familie.sass";
@@ -11,10 +11,10 @@ export default class Familie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "Id",
-      name: "Name",
-      created_at: "Cr",
-      updated_at: "Up",
+      id: "",
+      name: "",
+      created_at: "",
+      updated_at: "",
       loading: true,
     };
     this.asyncGetFamilie = this.asyncGetFamilie.bind(this);
@@ -48,11 +48,10 @@ export default class Familie extends Component {
   stopRolling() {
     clearInterval(this.interval);
     this.setState({
-      id: "Don't forget",
-      name: "to bring a Towel",
-      sex: "",
-      hair_color: "",
-      occupation: "",
+      id: "",
+      name: "",
+      created_at: "",
+      updated_at: "",
       loading: true,
     });
   }
@@ -97,19 +96,19 @@ export default class Familie extends Component {
 const View = ({ id, name, updated_at, created_at, loading }) => {
   let loader;
   if (loading) {
-    loader = <Loader />;
+    loader = <FamilieLoader />;
   } else {
     loader = null;
   }
   return (
-    <Card className="content_familie">
-      <CardBody>
-        <CardTitle>{id}</CardTitle>
-        <CardTitle>{name}</CardTitle>
-        <CardTitle>{updated_at}</CardTitle>
-        <CardTitle>{created_at}</CardTitle>
+    <div className="content_familie">
+      <div className="inner">
+        <div>{id}</div>
+        <div>{name}</div>
+        <div>{updated_at}</div>
+        <div>{created_at}</div>
         {loader}
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 };

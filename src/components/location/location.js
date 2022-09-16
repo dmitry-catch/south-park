@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import GetData from "../../services/getData";
 import Loader from "../../loader";
 
-import { Card, CardBody, CardTitle, Button } from "reactstrap";
+import { Button } from "reactstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./location.sass";
@@ -11,10 +11,10 @@ export default class Location extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "A",
-      name: "B",
-      created_at: "C",
-      updated_at: "D",
+      id: "",
+      name: "",
+      created_at: "",
+      updated_at: "",
       loading: true,
     };
     this.asyncGetLocation = this.asyncGetLocation.bind(this);
@@ -48,11 +48,10 @@ export default class Location extends Component {
   stopRolling() {
     clearInterval(this.interval);
     this.setState({
-      id: "Don't forget",
-      name: "to bring a Towel",
-      sex: "",
-      hair_color: "",
-      occupation: "",
+      id: "",
+      name: "",
+      created_at: "",
+      updated_at: "",
       loading: true,
     });
   }
@@ -97,19 +96,19 @@ export default class Location extends Component {
 const View = ({ id, name, updated_at, created_at, loading }) => {
   let loader;
   if (loading) {
-    loader = <Loader />;
+    loader = <h2 className="tab-sp">SOUTH PARK</h2>;
   } else {
     loader = null;
   }
   return (
-    <Card className="content_location">
-      <CardBody>
-        <CardTitle>{id}</CardTitle>
-        <CardTitle>{name}</CardTitle>
-        <CardTitle>{updated_at}</CardTitle>
-        <CardTitle>{created_at}</CardTitle>
+    <div className="content_location">
+      <div className="inner_g">
+        <div>{id}</div>
+        <div>{name}</div>
+        <div>{updated_at}</div>
+        <div>{created_at}</div>
         {loader}
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 };

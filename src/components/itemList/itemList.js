@@ -32,8 +32,10 @@ class ItemList extends Component {
       <div className="wrap">
         <div className="item">
           <div className="roll">
-            <span className="header-roll">Roll random : </span>
-            <button onClick={this.visionToggle}>🗕</button>
+            <div className="header-roll">
+              <span>Roll random : </span>
+              <button onClick={this.visionToggle}>🗕</button>
+            </div>
             {res}
           </div>
           <div>{list}</div>

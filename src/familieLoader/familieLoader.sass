@@ -1,0 +1,28 @@
+
+.windows
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+
+  .window
+    width: 80px
+    height: 80px
+    background: aqua
+    margin: 30px
+    border: 4px solid black
+    animation: light 0.5s infinite
+    .vert
+      height: 75px
+      width: 5px
+      position: absolute
+      transform: translateX(650%)
+      background: #000
+    .horz
+      width: 75
+      height: 5px
+      transform: translateY(650%)
+      background: #000
+
+@keyframes light
+ from { background: aqua }
+ to { background: yellow }
