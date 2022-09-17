@@ -99,23 +99,20 @@ export default class Char extends Component {
 }
 
 const View = ({ id, name, sex, hair_color, occupation, loading }) => {
-  let loader;
-  let optional;
-  if (loading) {
-    loader = <Loader />;
-  } else {
-    loader = null;
-    optional = "white_line";
-  }
   return (
     <Card className="content_char">
       <CardBody className="cardbody">
         <CardTitle className="white_line">{id}</CardTitle>
         <CardTitle className="white_line">{name}</CardTitle>
-        <CardTitle className={optional}>{sex}</CardTitle>
-        <CardTitle className={optional}>{hair_color}</CardTitle>
-        <CardTitle className={optional}>{occupation}</CardTitle>
-        {loader}
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <CardTitle className="white_line">{sex}</CardTitle>
+            <CardTitle className="white_line">{hair_color}</CardTitle>
+            <CardTitle className="white_line">{occupation}</CardTitle>
+          </>
+        )}
       </CardBody>
     </Card>
   );
