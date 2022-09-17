@@ -1,2 +1,2 @@
-import CharList from "./charList";
+import { CharList } from './charList';
 export default CharList;
