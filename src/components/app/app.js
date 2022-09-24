@@ -17,9 +17,7 @@ import Header from "../header";
 import "./app.sass";
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+
 
   render() {
     return (

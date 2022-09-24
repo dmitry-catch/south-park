@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./itemList.sass";
 
-class ItemList extends Component {
+export default class ItemList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,5 +44,3 @@ class ItemList extends Component {
     );
   }
 }
-
-export default ItemList;
